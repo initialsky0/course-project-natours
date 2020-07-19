@@ -1,0 +1,14 @@
+// Normalize Base Setup
+*,
+*::after,
+*::before {
+   margin: 0;
+   padding: 0;
+   box-sizing: inherit;
+}
+
+// do not use px, which overwrite default font size and mess up intended format
+// rem value is based on this
+html { font-size: 62.5%; }
+
+body { box-sizing: border-box; }

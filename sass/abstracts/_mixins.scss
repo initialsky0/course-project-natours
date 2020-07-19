@@ -1,0 +1,27 @@
+@mixin clearfix {
+   // for fixing floating items
+   &::after {
+      content: "";
+      display: table;
+      clear: both;
+   }
+}
+
+@mixin generate-background($url) {
+   // takes in url() and generate background with gradient effect
+   background-image: linear-gradient(
+         to right bottom, 
+         rgba($color-primary-light, .8),
+         rgba($color-primary-dark, .8)), 
+         $url;
+   background-size: cover;
+}
+
+@mixin gradient-font($linear-grad) {
+   // takes in linear-gradient to generate the gradient font
+   display: inline-block;
+   background-image: $linear-grad;
+   background-clip: text;
+   -webkit-background-clip: text;
+   color: transparent;
+}

@@ -1,0 +1,97 @@
+// pseudo class :link is regular link state, and :visited is after click
+.btn{
+   &:link,
+   &:visited {
+      display: inline-block;
+      font-size: $default-font-size;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1.5rem 4rem;
+      border-radius: 10rem;
+      transition: all .25s ease;
+      position: relative;
+   }
+
+   &:hover {
+      transform: translateY(-.3rem);
+      // box-shadow -> x y blur color
+      box-shadow: 0 1rem 1.6rem rgba($color-black, .2);
+
+      &::after {
+         transform: scaleX(1.2) scaleY(1.5);
+         opacity: 0;
+      }
+   }
+
+   &:active {
+      // active is when the item is clicked, it's relative to link state
+      transform: translateY(.1rem);
+      box-shadow: 0 .5rem .8rem rgba($color-black, .2);
+   }
+
+   &--white {
+      background-color: $color-white;
+      color: $color-gray-dark;
+
+      &::after { background-color: $color-white; }
+   }
+
+   &::after {
+      // ::after require content and display properties, the rest can be the same based on design
+      // It's treated like child of btn element 
+     
+      content: "";
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      border-radius: 10rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      transition: all .2s ease-out;
+   }
+
+   &--animated {
+      animation: moveInBottom .5s ease-in .3s backwards;
+      
+      // animation-name: moveInBottom;
+      // animation-duration: .5;
+      // animation-timing-function: ease-in;
+      // animation-delay: .3s;
+      // animation-fill-mode: backwards;
+      
+      //  backwards will apply the css effects after animation before animation start,
+      //  forwards is allowing the css effects stay after animation.
+   }
+
+   &-text {
+      &:link,
+      &:visited {
+         color: $color-primary;
+         font-size: $default-font-size;
+         display: inline-block;
+         text-decoration: none;
+         border-bottom: .1rem solid $color-primary;
+         padding: .3rem;
+         transition: all .2s ease-in-out;
+      }
+
+      &:hover {
+         background-color: $color-primary;
+         color: $color-white;
+         padding: {
+            left: 1rem;
+            right: 1rem;
+         };
+         border-radius: .6rem;
+         box-shadow: 0 1rem 2rem rgba($color-black, .15);
+         transform: translateY(-.2rem) translateX(-.7rem);
+      }
+
+      &:active {
+         box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+         transform: translateY(0) translateX(-.7rem);
+      }
+   }
+}
