@@ -2,11 +2,12 @@
    // vh is viewheight
    height: 95vh; 
    position: relative;
-   @include generate-background(url(../../img/hero.jpg));
+   @include generate-background(url(../img/hero.jpg));
    // background-image is now moved to @mixin
    // pin side of the background image to stay when window size changed
    background-position: top;
    // control visible area with clip-path, polygon define the inner visible shape
+   -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
    clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
 
    &__logo-box {

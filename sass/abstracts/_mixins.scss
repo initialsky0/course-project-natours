@@ -9,6 +9,7 @@
 
 @mixin generate-background($url) {
    // takes in url() and generate background with gradient effect
+   // use background-image if the background is using linear-gradient
    background-image: linear-gradient(
          to right bottom, 
          rgba($color-primary-light, .8),
