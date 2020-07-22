@@ -10,6 +10,7 @@
       padding: 1.5rem 4rem;
       border-radius: 10rem;
       transition: all .25s ease;
+      backface-visibility: hidden;
       position: relative;
 
       //Change for the <button> element

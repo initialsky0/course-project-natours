@@ -1,14 +1,29 @@
 .header {
    // vh is viewheight
-   height: 95vh; 
+   height: 85vh; 
    position: relative;
-   @include generate-background(url(../img/hero.jpg));
+   @include generate-background(url(../img/hero-small.jpg));
    // background-image is now moved to @mixin
    // pin side of the background image to stay when window size changed
    background-position: top;
    // control visible area with clip-path, polygon define the inner visible shape
-   -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
-   clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+   
+
+   @supports(clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+      height: 95vh; 
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+   }
+
+   @media(min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em),
+         (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em) {
+      @include generate-background(url(../img/hero.jpg));
+   }
+
+   @include respond(phone) {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+   }
 
    &__logo-box {
       position: absolute;
